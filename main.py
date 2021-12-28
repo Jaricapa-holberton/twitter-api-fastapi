@@ -1,5 +1,5 @@
 # Python
-from typing import Dict, List, Optional
+from typing import List , Dict
 
 # Pydantic
 # Models
@@ -9,20 +9,6 @@ from models import UserBase, User, UserLogin, Tweet
 from fastapi import FastAPI, status, Path
 
 app = FastAPI()
-
-@app.get('/',
-         summary='Home',
-         status_code=status.HTTP_200_OK)
-def home() -> Dict[str, str]:
-    """Home route.
-
-    Returns a message indicating that the app is running.
-    """
-
-    return {
-        'message': 'Twitter API is working!',
-    }
-
 
 ## Auth
 @app.post(
@@ -89,52 +75,58 @@ def update_an_user():
 
 ## Tweets
 
+### Show  all tweets
 @app.get(
-    path='/',
+    path="/",
     response_model=List[Tweet],
     status_code=status.HTTP_200_OK,
-    summary='Show all tweets',
-    tags=['Tweets']
+    summary="Show all tweets",
+    tags=["Tweets"]
 )
 def home():
-    return {'Twitter API': 'Working!'}
+    # return {"Twitter API": "Working!"}
+    pass
 
+### Post a tweet
 @app.post(
-    path='/post',
+    path="/post",
     response_model=Tweet,
     status_code=status.HTTP_201_CREATED,
-    summary='Post a tweet',
-    tags=['Tweets']
+    summary="Post a tweet",
+    tags=["Tweets"]
 )
-def post():
+def post(): 
     pass
 
+### Show a tweet
 @app.get(
-    path='/tweet/{tweet_id}',
+    path="/tweets/{tweet_id}",
     response_model=Tweet,
     status_code=status.HTTP_200_OK,
-    summary='Show a tweet',
-    tags=['Tweets']
+    summary="Show a tweet",
+    tags=["Tweets"]
 )
-def show_a_tweet():
+def show_a_tweet(): 
     pass
 
+### Delete a tweet
 @app.delete(
-    path='/tweet/{tweet_id}',
+    path="/tweets/{tweet_id}/delete",
     response_model=Tweet,
     status_code=status.HTTP_200_OK,
-    summary='Delete a tweet',
-    tags=['Tweets']
+    summary="Delete a tweet",
+    tags=["Tweets"]
 )
-def delete_a_tweet():
+def delete_a_tweet(): 
     pass
 
+### Update a tweet
 @app.put(
-    path='/tweet/{tweet_id}',
+    path="/tweets/{tweet_id}/update",
     response_model=Tweet,
     status_code=status.HTTP_200_OK,
-    summary='Update a tweet',
-    tags=['Tweets']
+    summary="Update a tweet",
+    tags=["Tweets"]
 )
-def update_a_tweet():
+def update_a_tweet(): 
     pass
