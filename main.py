@@ -408,7 +408,7 @@ def delete_a_tweet(
     summary="Update a tweet",
     tags=["Tweets"]
     )
-def upsate_a_tweet(
+def update_a_tweet(
         tweet_id: UUID = Path(
             ...,
             title="Tweet ID",
