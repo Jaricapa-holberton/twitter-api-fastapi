@@ -1,7 +1,7 @@
 # Python
 from uuid import UUID
 from datetime import date, datetime
-from typing import TypeVar, Generic, Dict, Optional, List
+from typing import Optional
 
 # Pydantic
 from pydantic import BaseModel, Field, EmailStr
@@ -47,5 +47,10 @@ class Tweet(BaseModel):
         max_length=256
     )
     created_at: datetime = Field(default=datetime.now())
-    update_at: Optional[datetime] = Field(default=None)
+    updated_at: Optional[datetime] = Field(default=None)
     by: User = Field(...)
+    
+
+class LoginOut(BaseModel): 
+    email: EmailStr = Field(...)
+    message: str = Field(default="Login Successfully!")
